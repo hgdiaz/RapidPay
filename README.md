@@ -22,12 +22,14 @@ With this sample you can see how to use CQRS (with Mediatr), Fluent Validation, 
 
 According to Jimmy Bogard: "In this style, my architecture is built around distinct requests, encapsulating and grouping all concerns from front-end to back. You take a normal "n-tier" or hexagonal/whatever architecture and remove the gates and barriers across those layers, and couple along the axis of change:"
 
-https://jimmybogardsblog.blob.core.windows.net/jimmybogardsblog/3/2018/Picture0030.png
+![slices-architecture](https://jimmybogardsblog.blob.core.windows.net/jimmybogardsblog/3/2018/Picture0030.png)
 
-https://www.jimmybogard.com/vertical-slice-architecture/
+Source: https://www.jimmybogard.com/vertical-slice-architecture/
 
 The main idea with this project is to make a simple implementation of this architecture, without having several projects or other artifacts.
 
-In a future, probably I make the same solution using an onion architecture, like the image below.
+In a future, probably I make the same solution using an onion architecture, like the image below:
+![onion-sample](https://github.com/hgdiaz/RapidPay/blob/main/img/Onion_sample.jpg?raw=true)
 Here remains the idea of a clean architecture, but I prefer this for more complex projects.
+For more information, check Palermo's website: https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/
 
