@@ -29,6 +29,15 @@ The main idea with this project is to make a simple implementation of this archi
 
 In a future, probably I make the same solution using an onion architecture, like the image below:
 ![onion-sample](https://github.com/hgdiaz/RapidPay/blob/main/img/Onion_sample.jpg?raw=true)
+
 Here remains the idea of a clean architecture, but I prefer this for more complex projects.
 For more information, check Palermo's website: https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/
 
+## Running the project
+To run this project you need Visual Studio 2022 with dotnet core 6 installed.
+Then, inside the src folder, open the solution file RapidPay.sln with VS.
+The nuget packages will be restored automatically.
+Select the RapidPayAPI project and press F5. You'll see the Swagger UI to call the endpoints.
+Before calling the endpoints, you must login with a valid user. There are 2 already created: "admin" with the pass "Pass.123" and "user" with the same password.
+Just call the /api/Authenticate/login endpoint and fill the credentials. You'll get a JWT in the response. Copy this token and in the Authorize button in the upper right. In the Value textbox, type the word Bearer and then paste your token. The click on the authorize button. That´s all....now you can call the endpoints (if the user has the permission to call it).
+Tip: in the CardsController.cs and the PaymentsController.cs files, there are commented endpoints to retreive usefull data to test if everything is working ok.
