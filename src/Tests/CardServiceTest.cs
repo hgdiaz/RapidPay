@@ -19,7 +19,7 @@ namespace Tests
                 CardHolderName = "Person 1",
                 ExpirationMonth = 1,
                 ExpirationtYear = 2024,
-                CVC = 123,
+                CVC = "123",
                 Balance = 10000
             });
 
@@ -49,7 +49,7 @@ namespace Tests
                 CardHolderName = "Person 2",
                 ExpirationMonth = 1,
                 ExpirationtYear = 2024,
-                CVC = 123,
+                CVC = "123",
                 Balance = 10000
             });
 
