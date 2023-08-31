@@ -6,6 +6,10 @@ using RapidPayAPI.Features.Payments;
 
 namespace RapidPayAPI.Services
 {
+    /// <summary>
+    /// This class is added to the services as a singleton
+    /// so it can be shared acrross multiple requests
+    /// </summary>
     public class FeeService : IFeeService
     {
 

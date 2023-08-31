@@ -19,18 +19,25 @@ namespace RapidPayAPI.Features.PaymentsController
             _mediator = mediator;
         }
 
-        [HttpGet("GetPaymentsByCard/{cardnumber}")]
-        [Authorize]
-        public async Task<ActionResult<IEnumerable<GetPaymentsByCard.PaymentResult>>> GetPaymentsByCard(string cardnumber)
-        {
 
-            GetPaymentsByCard.GetPaymentsByCardQuery query =
-                    new GetPaymentsByCard.GetPaymentsByCardQuery() { CardNumber = cardnumber };
-            var result = await _mediator.Send(query);
+        /// <summary>
+        /// Used for testing purposes
+        /// Uncomment the lines below to get all payments for a card (only for admin users)
+        /// </summary>
+        /// <param name="cardnumber"></param>
+        /// <returns></returns>
+        //[HttpGet("GetPaymentsByCard/{cardnumber}")]
+        //[Authorize]
+        //public async Task<ActionResult<IEnumerable<GetPaymentsByCard.PaymentResult>>> GetPaymentsByCard(string cardnumber)
+        //{
 
-            return Ok(result);
+        //    GetPaymentsByCard.GetPaymentsByCardQuery query =
+        //            new GetPaymentsByCard.GetPaymentsByCardQuery() { CardNumber = cardnumber };
+        //    var result = await _mediator.Send(query);
 
-        }
+        //    return Ok(result);
+
+        //}
 
     }
 }

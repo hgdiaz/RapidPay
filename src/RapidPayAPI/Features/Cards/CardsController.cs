@@ -20,14 +20,20 @@ namespace RapidPayAPI.Features.CardsController
             _mediator = mediator;            
         }
 
-        [HttpGet("GetCards")]
-        [Authorize(Roles = UserRoles.Admin)]
-        public async Task<ActionResult<IEnumerable<GetAllCards.CardResult>>> GetCards()
-        {
-            var result = await _mediator.Send(new GetAllCards.GetCardsQuery());
+        /// <summary>
+        /// Used for testing purposes
+        /// Uncomment the lines below to get all cards (only for admin users)
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
+        //[HttpGet("GetCards")]
+        //[Authorize(Roles = UserRoles.Admin)]
+        //public async Task<ActionResult<IEnumerable<GetAllCards.CardResult>>> GetCards()
+        //{
+        //    var result = await _mediator.Send(new GetAllCards.GetCardsQuery());
 
-            return Ok(result);
-        }
+        //    return Ok(result);
+        //}
 
         [HttpGet("GetCardBalance/{number}")]
         [Authorize]
