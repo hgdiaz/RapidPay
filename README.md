@@ -21,8 +21,7 @@ With this sample you can see how to use CQRS (with Mediatr), Fluent Validation, 
 ## Vertical Slices Architecture
 
 According to Jimmy Bogard: "In this style, my architecture is built around distinct requests, encapsulating and grouping all concerns from front-end to back. You take a normal "n-tier" or hexagonal/whatever architecture and remove the gates and barriers across those layers, and couple along the axis of change:"
-
-![slices-architecture](https://jimmybogardsblog.blob.core.windows.net/jimmybogardsblog/3/2018/Picture0030.png)
+![vertical-slices](https://github.com/hgdiaz/RapidPay/blob/main/img/slices.png?raw=true)
 
 Source: https://www.jimmybogard.com/vertical-slice-architecture/
 
