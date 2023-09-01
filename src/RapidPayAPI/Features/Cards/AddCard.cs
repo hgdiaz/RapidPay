@@ -33,17 +33,18 @@ namespace RapidPayAPI.Features.Cards
         {
             private readonly IServiceManager _serviceManager;
             private readonly IMapper _mapper;
+            private readonly ILogger<AddCard> _logger;
 
-            public Handler(IServiceManager serviceManager, IMapper mapper)
+            public Handler(IServiceManager serviceManager, IMapper mapper, ILogger<AddCard> logger)
             {
                 _serviceManager = serviceManager;
                 _mapper = mapper;
-            }
+                _logger = logger;
+            }   
 
             public async Task<CardResult> Handle(AddCardCommand request, CancellationToken cancellationToken)
             {
                 Card result = new Card();
-
                 try
                 {
                     //check if there's already a card with the same number
@@ -71,7 +72,7 @@ namespace RapidPayAPI.Features.Cards
                 }
                 catch (Exception ex)
                 {
-                    //logging can be used here (like Serilog) to save exception information
+                    _logger.LogInformation("AddCard: " + ex.Message);
                     throw;
                 }
 

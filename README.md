@@ -14,7 +14,7 @@ With this sample you can see how to use CQRS (with Mediatr), Fluent Validation, 
 - [x] Identity
 - [x] JWT
 - [x] Swagger
-- [ ] Logging with Serilog
+- [x] Logging with Serilog
 
 
 

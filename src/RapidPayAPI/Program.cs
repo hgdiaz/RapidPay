@@ -12,11 +12,20 @@ using RapidPayAPI.Features.Payments;
 using RapidPayAPI.ServiceManager;
 using RapidPayAPI.Services;
 using System.Text;
+using Microsoft.Extensions.Logging;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
 
 // Add services to the container.
+
+var logger = new LoggerConfiguration()
+  .ReadFrom.Configuration(builder.Configuration)
+  .Enrich.FromLogContext()
+  .CreateLogger();
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(logger);
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddMediatR(typeof(Program).Assembly);

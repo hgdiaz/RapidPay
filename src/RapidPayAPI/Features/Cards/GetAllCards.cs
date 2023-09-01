@@ -23,11 +23,13 @@ namespace RapidPayAPI.Features.Cards
         {
             private readonly IServiceManager _serviceManager;
             private readonly IMapper _mapper;
+            private readonly ILogger<GetAllCards> _logger;
 
-            public Handler(IServiceManager serviceManager, IMapper mapper)
+            public Handler(IServiceManager serviceManager, IMapper mapper, ILogger<GetAllCards> logger)
             {
                 _serviceManager = serviceManager;
                 _mapper = mapper;
+                _logger = logger;
             }
 
             public async Task<IEnumerable<CardResult>> Handle(GetCardsQuery request, CancellationToken cancellationToken)
@@ -40,9 +42,8 @@ namespace RapidPayAPI.Features.Cards
                     result = _mapper.Map<IEnumerable<CardResult>>(cards);
                 }
                 catch (Exception ex)
-                {
-                    //logging can be used here (like Serilog) to save exception information
-
+                { 
+                    _logger.LogInformation("GetAllCards: " + ex.Message);
                 }
 
                 return result;

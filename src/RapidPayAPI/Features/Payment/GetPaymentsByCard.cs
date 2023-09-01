@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using RapidPayAPI.Domain;
+using RapidPayAPI.Features.Cards;
 using RapidPayAPI.Features.Cards.Exceptions;
 using RapidPayAPI.ServiceManager;
 
@@ -28,11 +29,13 @@ namespace RapidPayAPI.Features.Payments
         {
             private readonly IServiceManager _serviceManager;
             private readonly IMapper _mapper;
+            private readonly ILogger<GetPaymentsByCard> _logger;
 
-            public Handler(IServiceManager serviceManager, IMapper mapper)
+            public Handler(IServiceManager serviceManager, IMapper mapper, ILogger<GetPaymentsByCard> logger)
             {
                 _serviceManager = serviceManager;
                 _mapper = mapper;
+                _logger = logger;
             }
 
             public async Task<IEnumerable<PaymentResult>> Handle(GetPaymentsByCardQuery request, CancellationToken cancellationToken)
@@ -43,9 +46,9 @@ namespace RapidPayAPI.Features.Payments
                     var payments = await _serviceManager.Payment.GetPaymentsByCardAsync(request.CardNumber);
                     result = _mapper.Map<IEnumerable<PaymentResult>>(payments);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    //logging can be used here (like Serilog) to save exception information
+                    _logger.LogInformation("GetPaymentsByCard: " + ex.Message);
                     throw;
                 }
 

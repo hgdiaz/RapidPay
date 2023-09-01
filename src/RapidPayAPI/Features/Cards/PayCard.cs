@@ -29,13 +29,15 @@ namespace RapidPayAPI.Features.Cards
         {
             private readonly IServiceManager _serviceManager;
             private readonly IMapper _mapper;
-            private readonly IFeeService _feeService;
+            private readonly IFeeService _feeService; 
+            private readonly ILogger<PayCard> _logger;
 
-            public Handler(IServiceManager serviceManager, IMapper mapper, IFeeService feeService)
+            public Handler(IServiceManager serviceManager, IMapper mapper, IFeeService feeService, ILogger<PayCard> logger)
             {
                 _serviceManager = serviceManager;
                 _mapper = mapper;
                 _feeService = feeService;
+                _logger = logger;
             }
 
             public async Task<PayCardResult> Handle(PayCardCommand request, CancellationToken cancellationToken)
@@ -75,19 +77,19 @@ namespace RapidPayAPI.Features.Cards
                     result.PaymentSuccess = true;
                     
                 }
-                catch (InvalidCardException)
+                catch (InvalidCardException ex)
                 {
-                    //logging can be used here (like Serilog) to save exception information
+                    _logger.LogInformation("PayCard: " + ex.Message);
                     throw;
                 }
-                catch (InsuficientBalanceException)
+                catch (InsuficientBalanceException ex)
                 {
-                    //logging can be used here (like Serilog) to save exception information
+                    _logger.LogInformation("PayCard: " + ex.Message);
                     throw;
                 }
                 catch (Exception ex)
                 {
-                    //logging can be used here (like Serilog) to save exception information
+                    _logger.LogInformation("PayCard: " + ex.Message);
                     throw;
                 }
 
