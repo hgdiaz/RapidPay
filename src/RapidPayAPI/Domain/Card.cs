@@ -8,6 +8,7 @@ namespace RapidPayAPI.Domain
     {
         public Card()
         {
+            Balance = 0;
             this.Payments = new HashSet<Payment>();
         }
 

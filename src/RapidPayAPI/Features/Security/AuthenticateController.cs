@@ -101,8 +101,8 @@ namespace RapidPayAPI.Features.Security
             return Ok(new AuthResponse { Status = "Success", Message = "User created successfully!" });
         }
 
-        [HttpPost]
-        [Authorize(Roles = UserRoles.Admin)]
+        //[Authorize(Roles = UserRoles.Admin)]
+        [HttpPost]        
         [Route("register-admin")]
         public async Task<IActionResult> RegisterAdmin([FromBody] RegisterModel model)
         {

@@ -33,8 +33,9 @@ namespace RapidPayAPI.Features.Cards.Validators
                 .Must(x => new RegularExpressionAttribute(ValidationConstants.CardCVCRegex)
                 .IsValid(x?.TrimEnd())).WithMessage("Card CVC must be 3 digits");
 
-            RuleFor(request => request.Balance)
-                .GreaterThan(0).WithMessage("Balance must be positive");
+            //used only with case 1 (when must verify card's balance)
+            //RuleFor(request => request.Balance)
+            //    .GreaterThan(0).WithMessage("Balance must be positive");
 
         }
 

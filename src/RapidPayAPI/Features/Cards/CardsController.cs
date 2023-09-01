@@ -99,13 +99,14 @@ namespace RapidPayAPI.Features.CardsController
                     ex.Message
                 });
             }
-            catch (InsuficientBalanceException ex)
-            {
-                return Conflict(new
-                {
-                    ex.Message
-                });
-            }
+            //used only with case 1 (when must verify card's balance)
+            //catch (InsuficientBalanceException ex)
+            //{
+            //    return Conflict(new
+            //    {
+            //        ex.Message
+            //    });
+            //}
             catch (Exception ex)
             {
                 return Conflict(new

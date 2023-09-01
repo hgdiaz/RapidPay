@@ -19,7 +19,6 @@ namespace RapidPayAPI.Features.Cards
             public int ExpirationMonth { get; set; }
             public int ExpirationtYear { get; set; }
             public string CVC { get; set; }
-            public double Balance { get; set; }
         }
 
         //Output

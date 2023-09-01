@@ -19,8 +19,7 @@ namespace Tests
                 CardHolderName = "Person 1",
                 ExpirationMonth = 1,
                 ExpirationtYear = 2024,
-                CVC = "123",
-                Balance = 10000
+                CVC = "123"
             });
 
             await _context.SaveChangesAsync();
@@ -49,8 +48,7 @@ namespace Tests
                 CardHolderName = "Person 2",
                 ExpirationMonth = 1,
                 ExpirationtYear = 2024,
-                CVC = "123",
-                Balance = 10000
+                CVC = "123"
             });
 
             await _context.SaveChangesAsync();

@@ -36,8 +36,7 @@ namespace RapidPayAPI.Data
                 CardHolderName = "John Doe",
                 ExpirationMonth = 12,
                 ExpirationtYear = 2024,
-                CVC = "123",
-                Balance = 10000
+                CVC = "123"
             });
 
             _context.Cards.Add(new Card
@@ -47,8 +46,7 @@ namespace RapidPayAPI.Data
                 CardHolderName = "Homer Simpson",
                 ExpirationMonth = 6,
                 ExpirationtYear = 2025,
-                CVC = "321",
-                Balance = 5000
+                CVC = "321"
             });
 
             //Admin

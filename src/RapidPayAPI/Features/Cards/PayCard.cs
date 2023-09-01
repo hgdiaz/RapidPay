@@ -55,13 +55,29 @@ namespace RapidPayAPI.Features.Cards
                     if (request.CVC != card.CVC)
                         throw new InvalidCardException();
 
-                    //get the fee and check the balace
+                    //get the fee 
                     var fee = _feeService.GetFee();
-                    if ((request.Amount + fee) > card.Balance)
-                        throw new InsuficientBalanceException();
 
+                    //
+                    //case 1:
+                    // in case the card works as a debit card, we must check if the balance 
+                    // if enough to make the current pay 
+                    //
+                    //check the balace
+                    //if ((request.Amount + fee) > card.Balance)
+                    //    throw new InsuficientBalanceException();
                     //modify the card's balance 
-                    card.Balance -= (request.Amount + fee);
+                    //card.Balance -= (request.Amount + fee);
+
+                    //
+                    //case 2:
+                    // in this case, we just increase the balance and don't check
+                    // if there's enough money to make the current pay
+                    //
+                    //modify the card's balance 
+                    card.Balance += (request.Amount + fee);
+
+
                     await _serviceManager.Card.UpdateCard(card);
                     //save the payment information
                     Payment payment = new Payment()
@@ -82,11 +98,12 @@ namespace RapidPayAPI.Features.Cards
                     _logger.LogInformation("PayCard: " + ex.Message);
                     throw;
                 }
-                catch (InsuficientBalanceException ex)
-                {
-                    _logger.LogInformation("PayCard: " + ex.Message);
-                    throw;
-                }
+                //used only with case 1
+                //catch (InsuficientBalanceException ex)
+                //{
+                //    _logger.LogInformation("PayCard: " + ex.Message);
+                //    throw;
+                //}
                 catch (Exception ex)
                 {
                     _logger.LogInformation("PayCard: " + ex.Message);
